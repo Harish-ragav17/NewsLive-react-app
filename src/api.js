@@ -1,5 +1,5 @@
 import axios from "axios";
- const url='https://newsdata.io/api/1/news?apikey=pub_258322a68f389b3a410618a325240dd901822&q=education'
+ const url='https://newsdata.io/api/1/news?apikey={YourApiKey}&q=education'
 
 const getdata=async(setdata,setLoading)=>
 { 
