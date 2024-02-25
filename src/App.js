@@ -1,23 +1,43 @@
-import logo from './logo.svg';
-import './App.css';
+import { Route, Routes } from "react-router-dom";
+import "./App.css";
+import Layout from "./Layout";
+import Content from "./Content";
+import {getdata,getNewdata} from "./api";
+import { useState, useEffect } from "react";
 
 function App() {
+  const [datas, setdata] = useState([]);
+  const [loading,setLoading]=useState(true);
+  const [name,setName]=useState("News");
+   useEffect(() => {
+    getdata(setdata,setLoading);
+    document.title = 'NewsLive';
+  }, []);
+  const home=()=>
+  {
+    setLoading(true)
+    getdata(setdata,setLoading);
+    setName("News")
+  }
+  const handleClick=()=>
+  {
+        setLoading(true)
+       getNewdata(setdata,`https://newsdata.io/api/1/news?apikey=${process.env.key}&q=Latest`,setLoading)
+        setName("Latest")
+  }
+  const handleClick2=()=>
+  {
+    setLoading(true)
+    getNewdata(setdata,`https://newsdata.io/api/1/news?apikey=${process.env.key}&q=Trending`,setLoading)
+    setName("Trending")
+  }
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <Routes>
+        <Route path="/" element={<Layout home={home} handleClick={handleClick} handleClick2={handleClick2}/>}>
+          <Route index element={<Content name={name} loading={loading} datas={datas} />} />
+        </Route>
+      </Routes>
     </div>
   );
 }
