@@ -5,6 +5,7 @@ import Content from "./Content";
 import {getdata,getNewdata} from "./api";
 import { useState, useEffect } from "react";
 
+
 function App() {
   const [datas, setdata] = useState([]);
   const [loading,setLoading]=useState(true);
@@ -13,6 +14,7 @@ function App() {
     getdata(setdata,setLoading);
     document.title = 'NewsLive';
   }, []);
+  console.log(process.env.REACT_APP_API_KEY)
   const home=()=>
   {
     setLoading(true)
@@ -22,13 +24,14 @@ function App() {
   const handleClick=()=>
   {
         setLoading(true)
-       getNewdata(setdata,'https://newsdata.io/api/1/news?apikey=pub_258322a68f389b3a410618a325240dd901822&q=Latest',setLoading)
+       getNewdata(setdata,`https://newsdata.io/api/1/news?apikey=${process.env.REACT_APP_API_KEY}&q=Latest`,setLoading)
         setName("Latest")
   }
   const handleClick2=()=>
   {
     setLoading(true)
-    getNewdata(setdata,'https://newsdata.io/api/1/news?apikey=pub_258322a68f389b3a410618a325240dd901822&q=Trending',setLoading)
+    
+    getNewdata(setdata,`https://newsdata.io/api/1/news?apikey=${process.env.REACT_APP_API_KEY}&q=Trending`,setLoading)
     setName("Trending")
   }
   return (
