@@ -30,6 +30,7 @@ function App() {
     setLoading(true)
     getNewdata(setdata,`https://newsdata.io/api/1/news?apikey=${process.env.key}&q=Trending`,setLoading)
     setName("Trending")
+    
   }
   return (
     <div className="App">
