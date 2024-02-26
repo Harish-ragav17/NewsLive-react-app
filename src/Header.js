@@ -1,5 +1,4 @@
 import React from 'react'
-import { Link } from 'react-router-dom'
 
 const Header = ({home,handleClick,handleClick2}) => {
   return (
