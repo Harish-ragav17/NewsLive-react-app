@@ -33,6 +33,7 @@ function App() {
     
     getNewdata(setdata,`https://newsdata.io/api/1/news?apikey=${process.env.REACT_APP_API_KEY}&q=Trending`,setLoading)
     setName("Trending")
+    
   }
   return (
     <div className="App">
