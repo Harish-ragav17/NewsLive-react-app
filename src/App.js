@@ -2,6 +2,7 @@ import { Route, Routes } from "react-router-dom";
 import "./App.css";
 import Layout from "./Layout";
 import Content from "./Content";
+import View from "./View"
 import {getdata,getNewdata} from "./api";
 import { useState, useEffect } from "react";
 
@@ -14,7 +15,7 @@ function App() {
     getdata(setdata,setLoading);
     document.title = 'NewsLive';
   }, []);
-  console.log(process.env.REACT_APP_API_KEY)
+
   const home=()=>
   {
     setLoading(true)
@@ -24,14 +25,14 @@ function App() {
   const handleClick=()=>
   {
         setLoading(true)
-       getNewdata(setdata,`https://newsdata.io/api/1/news?apikey=${process.env.REACT_APP_API_KEY}&q=Latest`,setLoading)
+       getNewdata(setdata,`https://newsdata.io/api/1/news?apikey=${process.env.REACT_APP_API_KEY}&q=Latest&language=en`,setLoading)
         setName("Latest")
   }
   const handleClick2=()=>
   {
     setLoading(true)
     
-    getNewdata(setdata,`https://newsdata.io/api/1/news?apikey=${process.env.REACT_APP_API_KEY}&q=Trending`,setLoading)
+    getNewdata(setdata,`https://newsdata.io/api/1/news?apikey=${process.env.REACT_APP_API_KEY}&q=Trending&language=en`,setLoading)
     setName("Trending")
     
   }
@@ -40,6 +41,7 @@ function App() {
       <Routes>
         <Route path="/" element={<Layout home={home} handleClick={handleClick} handleClick2={handleClick2}/>}>
           <Route index element={<Content name={name} loading={loading} datas={datas} />} />
+          <Route path="/view/:id" element={<View datas={datas}/>} />
         </Route>
       </Routes>
     </div>

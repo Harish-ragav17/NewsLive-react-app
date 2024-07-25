@@ -12,6 +12,10 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
 }
+a{
+  text-decoration: none;
+  color: black;
+}
 #header {
   background-color: black;
   top: 0;
@@ -25,6 +29,7 @@ ul,
 input {
   display: inline-block;
   cursor: pointer;
+  color: white;
 }
 #header input {
   margin-left: 150px;
@@ -95,4 +100,22 @@ button {
   border: 2px dashed red;
   padding: 8px;
   display: inline-block;
+}
+#Overall{
+  padding: 30px;
+}
+#Title{
+  text-align: center;
+  padding: 30px;
+  font-size: 19px;
+  background-color: aliceblue;
+  border-radius: 10px;
+  margin-bottom: 20px;
+}
+
+#content{
+  font-size:18px;
+  padding: 20px;
+  line-height: 40px;
+  text-indent: 100px;
 }
