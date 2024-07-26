@@ -8,8 +8,9 @@ const Header = ({home,handleClick,handleClick2}) => {
       <h2 onClick={home}>#NewsLive</h2>
       </Link>
       <ul>
-        <li><button onClick={handleClick}>Latest News</button></li>
-        <li><button onClick={handleClick2}>#Trending</button></li>
+        
+        <li><Link to={"/"}><button onClick={handleClick}>Latest News</button></Link></li>
+        <li><Link to={"/"}><button onClick={handleClick2}>#Trending</button></Link></li>
       </ul>
     </div>
       
